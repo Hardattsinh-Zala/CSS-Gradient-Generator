@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <title>Gradient Generator</title>
+</head>
+
+<body class="bg-gray-200">
+  <nav class="w-full h-16 sticky top-0 bg-white shadow z-50">
+    <div class="w-full flex justify-around items-center h-full">
+      <a class="text-xl font-bold" href="#">Tech Neons</a>
+      <div class="w-72">
+        <ul class="flex items-center justify-between space-x-6">
+          <li>
+            <a class="hover:text-blue-500 cursor-pointer">Home</a>
+          </li>
+          <li>
+            <a class="hover:text-blue-500 cursor-pointer">About</a>
+          </li>
+
+          <li>
+            <a class="hover:text-blue-500 cursor-pointer" onclick="Random()">Random</a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="relative group">
+            <a class="hover:text-blue-500 cursor-pointer flex items-center gap-1" onclick="Components()">Components</a>
+          </li>
+          <li>
+            <a class="text-gray-400">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="main--container">
+    <main class="gradient-section">
+      <div class="preview" id="preview"></div>
+      <section class="">
+        <div class="main-container p-4">
+          <h1 class="text-3xl font-bold">Generate a CSS Color Gradient</h1>
+
+          <h3>Enter colors</h3>
+          <div class="buttons flex flex-col">
+            <!-- <div>
+                  <input type="color" id="color1">
+                  <input type="color" id="color2">
+                </div> -->
+            <div class="color-picker"></div>
+            <div class="color-picker2"></div>
+            <div>
+              <button class="favourite px-10 py-3 rounded-full font-bold">Favourite</button>
+            </div>
+            <!-- <div> 
+                  <button class="b3 px-10 py-3 rounded-full font-bold">Generate</button>
+                </div> -->
+          </div>
+          <input type="file" id="upload" accept="image/*" />
+          <!-- <div id="gradient-preview" style="height: 200px; width: 100%; margin-top: 1rem;"></div> -->
+
+
+          <h4 class="text-2xl">Choose orientation</h4>
+          <div class="choice">
+            <a href="#" class="i1"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1vdmUtdXAtcmlnaHQiPjxwYXRoIGQ9Ik0xMyA1SDE5VjExIi8+PHBhdGggZD0iTTE5IDVMNSAxOSIvPjwvc3ZnPg=="
+                alt=""></a>
+            <a href="#" class="i2"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWFycm93LXJpZ2h0Ij48cGF0aCBkPSJNNSAxMmgxNCIvPjxwYXRoIGQ9Im0xMiA1IDcgNy03IDciLz48L3N2Zz4="
+                alt=""></a>
+            <a href="#" class="i3"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWFycm93LWRvd24tcmlnaHQiPjxwYXRoIGQ9Im03IDcgMTAgMTAiLz48cGF0aCBkPSJNMTcgN3YxMEg3Ii8+PC9zdmc+"
+                alt=""></a>
+            <a href="#" class="i4"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1vdmUtZG93biI+PHBhdGggZD0iTTggMThMMTIgMjJMMTYgMTgiLz48cGF0aCBkPSJNMTIgMlYyMiIvPjwvc3ZnPg=="
+                alt=""></a>
+            <a href="#" class="i5"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWFycm93LWRvd24tbGVmdCI+PHBhdGggZD0iTTE3IDcgNyAxNyIvPjxwYXRoIGQ9Ik0xNyAxN0g3VjciLz48L3N2Zz4="
+                alt=""></a>
+            <a href="#" class="i6"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWFycm93LWxlZnQiPjxwYXRoIGQ9Im0xMiAxOS03LTcgNy03Ii8+PHBhdGggZD0iTTE5IDEySDUiLz48L3N2Zz4="
+                alt=""></a>
+            <a href="#" class="i7"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1vdmUtdXAtbGVmdCI+PHBhdGggZD0iTTUgMTFWNUgxMSIvPjxwYXRoIGQ9Ik01IDVMMTkgMTkiLz48L3N2Zz4="
+                alt=""></a>
+            <a href="#" class="i8"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWFycm93LXVwIj48cGF0aCBkPSJtNSAxMiA3LTcgNyA3Ii8+PHBhdGggZD0iTTEyIDE5VjUiLz48L3N2Zz4="
+                alt=""></a>
+            <a href="#" class="i9"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJvdGF0ZS1jY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDEgMCA5LTkgOS43NSA5Ljc1IDAgMCAwLTYuNzQgMi43NEwzIDgiLz48cGF0aCBkPSJNMyAzdjVoNSIvPjwvc3ZnPg=="
+                alt=""></a>
+          </div>
+
+          <div
+            class="final-data flex justify-evenly bg-gray-200 rounded-md text-center text-md font-semibold px-4 py-4 gap-x-6 shadow-md rounded-md">
+            <p id="gradient" class="old">
+              background: linear-gradient(60deg, rgba(243,127,6,1) 0%, rgba(111,55,49,1) 100%);
+            </p>
+            <button id="copy"
+              class="bg-gray-500 flex text-white px-4 py-1 rounded-xl sm:flex-justify-evenly transition duration-300 transform hover:bg-gray-800 hover:scale-110 active:scale-85"
+              onclick="copy()">
+              Copy
+            </button>
+          </div>
+
+          <h2 align="center">Your personal favourites</h2>
+          <section class="favouriteSection">
+            <div class="favContainer"></div>
+          </section>
+        </div>
+      </section>
+      <section class="flex flex-col random-section">
+        <div class="flex flex-col justify-between items-center m-4">
+          <div class="w-full h-80 flex justify-between items-center absolute top-16">
+            <button class="w-16 h-16 text-4xl" onclick={generateHash1()}>
+              < </button>
+                <button class="w-16 h-16 text-4xl" onclick={generateHash2()}> > </button>
+          </div>
+        </div>
+      </section>
+  </div>
+  </main>
+
+  <main class="components hidden">
+    <div class="w-[100%] h-screen palate flex flex-wrap gap-12 justify-center pt-20">
+      <h1>Buttons</h1>
+      <div class="w-[100%] h-screen buttonPratik flex flex-wrap gap-12 justify-center pt-20">
+
+      </div>
+    </div>
+    <div>
+      <h1 class="my-14">Cards</h1>
+      <div class="w-[100%] h-screen palate flex flex-wrap gap-12 justify-center pt-20">
+
+      </div>
+    </div>
+  </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"
+    crossorigin="anonymous"></script>
+</body>
+</html>
