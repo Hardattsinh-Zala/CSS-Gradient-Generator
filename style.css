@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -11,7 +11,7 @@ nav {
     align-items: center;
 }
 
-body{
+body {
     width: 100%;
     /* display: flex; */
     justify-content: center;
@@ -21,8 +21,8 @@ body{
     overflow-y: scroll;
 }
 
-.preview{
-    width: 100%;
+.preview {
+    width: 80%;
     height: 20rem;
     background: linear-gradient(60deg, rgba(243,127,6,1), rgba(111,55,49,1));
 }
@@ -76,7 +76,7 @@ label {
     margin-bottom: 5px;
 }
 
-.main-container{
+.main-container {
     width: 70vw;
     display: flex;
     justify-content: center;
@@ -89,19 +89,19 @@ label {
     margin: 2rem auto 2rem auto;
 }
 
-img{
+img {
     padding: 0.5rem;
     border-radius: 50%;
 }
 
-input[type=color]{
+input[type=color] {
     width: 8rem;
     height: 0rem;
     padding: 1rem 2.5rem;
     text-align: center;
     border-radius: 30px;
 }
-input[type=button]{
+input[type=button] {
     width: 8rem;
     border-radius: 30px;
     padding: 0.5rem 0;
@@ -109,12 +109,12 @@ input[type=button]{
     text-align: center;
 }
 
-.buttons{
+.buttons {
     /* max-width: 23rem; */
     /* display: flex; */
     /* flex-direction: row; */
-    justify-content: center;
     /* flex-wrap: wrap; */
+    justify-content: center;
     align-items: center;
     gap: 1rem;
 }
@@ -125,11 +125,11 @@ input[type=button]{
     height: auto;
     padding: 1rem;
     background-color: transparent;
-    /* filter: blur(0.5px); */
     box-shadow: 0 0 0 1px white;
     color: #000;
     border-radius: 4px;
     color: #000;
+    /* filter: blur(0.5px); */
 }
 
 .b3{
@@ -181,15 +181,15 @@ input[type=button]{
     width: 100vw;
 }
 @media (max-width: 350px) {
-    html{
+    html {
         font-size: 80%;
     }
-    body{
+    body {
         height: auto;
         height: fit-content;
         padding: 2rem 0;
     }
-    .final-data{
+    .final-data {
         width: 90%;
     }
 }

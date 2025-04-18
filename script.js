@@ -11,17 +11,16 @@ const startFun = () => {
     }
 }
 
-window.onload = () =>{
+window.onload = () => {
     startFun();
     createBtn();
     createPalate();
 }
 
 const pickr = Pickr.create({
-    
     el: '.color-picker',
-    theme: 'classic', 
- 
+    theme: 'classic',
+
     swatches: [
         'rgba(244, 67, 54, 1)',
         'rgba(233, 30, 99, 0.95)',
@@ -58,9 +57,8 @@ const pickr = Pickr.create({
 });
 
 const pickr2 = Pickr.create({
-    
     el: '.color-picker2',
-    theme: 'classic', 
+    theme: 'classic',
 
     swatches: [
         'rgba(244, 67, 54, 1)',
@@ -100,30 +98,27 @@ const pickr2 = Pickr.create({
 let data1, data2, result;
 pickr.on('change', (color) => {
     data1 = color.toRGBA().toString();
-    if(selector != "circle") {
+    if (selector != "circle") {
         preview.style.background = `linear-gradient(to ${selector}, ${data1}, rgba(0, 0, 0, 0))`;
-    }else {
+    } else {
         preview.style.background = `radial-gradient(${selector}, ${data1}, rgba(0, 0, 0, 0))`;
     }
-    // console.log('Event: "change"', color.toRGBA().toString());
 })
 
 pickr2.on('change', (color) => {
     data2 = color.toRGBA().toString();
-    if(selector != "circle") {
+    if (selector != "circle") {
         result = `linear-gradient(to ${selector}, ${data1}, ${color.toRGBA().toString()}`;
         preview.style.background = result;
-    }else {
+    } else {
         result = `radial-gradient(${selector}, ${data1}, ${data2}`;
         preview.style.background = result;
     }
     localStorage.setItem('lastItem', result);
     old.innerText = result;
-    // console.log('Event: "change"', color.toRGBA().toString())
 })
 
 const upload = document.getElementById('upload');
-// const pre = document.getElementById('gradient-preview');
 const colorThief = new ColorThief();
 
 upload.addEventListener('change', function () {
@@ -143,9 +138,7 @@ upload.addEventListener('change', function () {
 
         const dominant = colorThief.getColor(img);
         const palette = colorThief.getPalette(img, 3);
-
         const gradient = `linear-gradient(to right, rgb(${palette[0]}), rgb(${palette[1]}), rgb(${palette[2]}))`;
-
         preview.style.background = gradient;
     };
 });
@@ -208,23 +201,23 @@ i9.addEventListener("click", () => {
 });
 
 let random1 = "#000", random2 = "FFF";
-const generateHash1 = ()=>{
+const generateHash1 = () => {
     let s = "#"
     let hex = "0123456789ABCDEF"
     for (let i = 0; i < 6; i++) {
-        let num = Math.floor(Math.random()*16);  
+        let num = Math.floor(Math.random() * 16);
         s = s.concat(hex[num]);
     }
-    
+
     random1 = s;
     console.log(random1);
     changeColor()
 }
-const generateHash2 = ()=>{
+const generateHash2 = () => {
     let s = "#"
     let hex = "0123456789ABCDEF"
     for (let i = 0; i < 6; i++) {
-        let num = Math.floor(Math.random()*16);  
+        let num = Math.floor(Math.random() * 16);
         s = s.concat(hex[num]);
     }
     console.log(s);
@@ -232,18 +225,19 @@ const generateHash2 = ()=>{
     changeColor()
 }
 
-const changeColor = ()=>{
+const changeColor = () => {
     preview.style.background = `linear-gradient(${select}, ${random1}, ${random2})`;
-    localStorage.setItem('lastItem', preview.style.background)    
+    localStorage.setItem('lastItem', preview.style.background)
 }
 
-choice.addEventListener('click', e=>{
+choice.addEventListener('click', e => {
     preview.style.background = `linear-gradient(${select}, ${random1}, ${random2})`;
-    if(select == 'circle'){
+    if (select == 'circle') {
         preview.style.background = `radial-gradient(${select}, ${random1}, ${random2})`;
     }
     localStorage.setItem('orientation', select);
 })
+
 function copy() {
     const newGradient = document.getElementById('gradient').textContent;
 
@@ -256,31 +250,31 @@ function copy() {
     document.getElementById("copy").innerText = "Copied";
     setTimeout(() => {
         document.getElementById("copy").innerText = "Copy";
-    }, 5000)
+    }, 5000);
 }
 
-const gencode = ()=>{    
+const gencode = () => {
     let s = "#"
     let hex = "0123456789ABCDEF"
     for (let i = 0; i < 6; i++) {
-        let num = Math.floor(Math.random()*16);  
+        let num = Math.floor(Math.random() * 16);
         s = s.concat(hex[num]);
     }
     return s;
 }
 
 let ButtonsPalate = document.querySelector(".buttonPratik");
-const createBtn = () =>{
-    for(let i = 0; i < 24; i++){
+const createBtn = () => {
+    for (let i = 0; i < 24; i++) {
         const btnCreate = document.createElement('button');
         btnCreate.style.width = `180px`
         btnCreate.style.height = `70px`
         btnCreate.style.background = `linear-gradient(to right, ${gencode()}, ${gencode()})`
         btnCreate.style.borderRadius = '50px'
         btnCreate.textContent = 'button'
-        btnCreate.style.fontWeight = "bold"; 
-        btnCreate.style.color = "white";      
-        btnCreate.style.letterSpacing = "3px"; 
+        btnCreate.style.fontWeight = "bold";
+        btnCreate.style.color = "white";
+        btnCreate.style.letterSpacing = "3px";
         ButtonsPalate.appendChild(btnCreate)
     }
     console.log(ButtonsPalate);
@@ -301,7 +295,7 @@ ButtonsPalate.addEventListener('click', (e) => {
 });
 
 let ul = document.querySelector('ul')
-ul.addEventListener('hover', ()=>{
+ul.addEventListener('hover', () => {
     let block = document.querySelector('feat');
     block.style.hover = 'block'
 })
@@ -312,7 +306,7 @@ const showSection = (sectionClass) => {
     document.querySelector('.components').classList.add('hidden');
 
     document.querySelector(`.${sectionClass}`).classList.remove('hidden');
-    if(sectionClass === 'random-section' || sectionClass === 'main-container' ){
+    if (sectionClass === 'random-section' || sectionClass === 'main-container') {
         document.querySelector('.main-container').classList.remove('hidden');
     }
 };
@@ -325,8 +319,6 @@ let favourite = document.querySelector(".favourite");
 let favContainer = document.querySelector(".favContainer");
 let count = 0
 favourite.addEventListener("click", () => {
-    // // localStorage.setItem(${count}, result);
-    // localStorage.setItem();
     const div = document.createElement("div");
     const cancel = document.createElement("i");
     const section = document.createElement("section");
@@ -340,8 +332,6 @@ favourite.addEventListener("click", () => {
     div.style.width = "3rem";
     div.style.borderRadius = "2rem";
 
-    // favContainer.appendChild(div);
-    // favContainer.appendChild(cancel);
     favContainer.appendChild(section);
     section.appendChild(div);
     section.appendChild(cancel);
@@ -353,13 +343,18 @@ favourite.addEventListener("click", () => {
     div.style.background = preview.style.background;
     localStorage.setItem(`${count}`, preview.style.background);
     count++;
+
+    document.querySelector(".favourite").innerText = "Added!";
+    setTimeout(() => {
+        document.querySelector(".favourite").innerText = "Favourite";
+    }, 2000);
 })
 
 let Palate = document.querySelector('.palate')
 
 
-const createPalate = () =>{
-    for(let i = 0; i < 20; i++){
+const createPalate = () => {
+    for (let i = 0; i < 20; i++) {
         const btnCreate = document.createElement('button');
         let d1 = gencode()
         let d2 = gencode()
@@ -368,9 +363,9 @@ const createPalate = () =>{
         btnCreate.style.background = `linear-gradient(to right, ${d1}, ${d2})`
         btnCreate.style.borderRadius = '30px'
         btnCreate.textContent = `${d1} to ${d2}`
-        btnCreate.style.fontWeight = "bold"; 
-        btnCreate.style.color = "white";      
-        btnCreate.style.letterSpacing = "3px"; 
+        btnCreate.style.fontWeight = "bold";
+        btnCreate.style.color = "white";
+        btnCreate.style.letterSpacing = "3px";
         ButtonsPalate.appendChild(btnCreate)
     }
     console.log(ButtonsPalate);
